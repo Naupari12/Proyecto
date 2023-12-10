@@ -1,5 +1,32 @@
-let nombreUsuario = prompt("Coloca tu nombre");
-document.getElementById("user-name").innerHTML = nombreUsuario;
+// Obtén el nombre de usuario almacenado en localStorage
+let nombreUsuarioAlmacenado = localStorage.getItem("nombreUsuario");
+
+let nombreUsuarioActual;
+
+if (nombreUsuarioAlmacenado) {
+    // Si hay un nombre de usuario almacenado, pregunta si es el mismo usuario
+    let esMismoUsuario = confirm("¿Eres el mismo usuario?");
+    
+    if (esMismoUsuario) {
+        // Si es el mismo usuario, utiliza el nombre almacenado
+        nombreUsuarioActual = nombreUsuarioAlmacenado;
+    } else {
+        // Si no es el mismo usuario, pide al usuario que ingrese un nuevo nombre
+        nombreUsuarioActual = prompt("Coloca tu nombre");
+        // Almacena el nuevo nombre de usuario en localStorage
+        localStorage.setItem("nombreUsuario", nombreUsuarioActual);
+    }
+} else {
+    // Si no hay un nombre de usuario almacenado, pide al usuario que ingrese su nombre
+    nombreUsuarioActual = prompt("Coloca tu nombre");
+    // Almacena el nombre de usuario en localStorage
+    localStorage.setItem("nombreUsuario", nombreUsuarioActual);
+}
+
+// Actualiza el contenido del elemento con id "user-name"
+let userNameElement = document.getElementById("user-name");
+userNameElement.innerHTML = nombreUsuarioActual;
+
 const fecha = document.querySelector("#fecha");
 const lista = document.querySelector("#lista");
 const input = document.querySelector("#input");
