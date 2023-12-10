@@ -1,3 +1,5 @@
+let nombreUsuario = prompt("Coloca tu nombre");
+document.getElementById("user-name").innerHTML = nombreUsuario;
 const fecha = document.querySelector("#fecha");
 const lista = document.querySelector("#lista");
 const input = document.querySelector("#input");
